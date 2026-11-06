@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package sol.transfers.v1;
+
+message Transfers {
+  repeated Transfer transfers = 1;
+}
+
+message Transfer {
+  string from = 1;
+  string to = 2;
+  uint64 amount = 3;
+}

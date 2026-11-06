@@ -1,3 +1,18 @@
 # Scratch Pad
 
-Use this file to save any notes, ideas, or temporary information as you work through the assignment.
+## Approach
+- Module map_transfers: sf.solana.type.v1.Block -> sol.transfers.v1.Transfers
+- Native SOL only: System Program (all-zero pubkey) instruction, u32 LE discriminator 2, u64 LE lamports,
+  accounts[0]=from, accounts[1]=to. Top-level + inner instructions, failed txs skipped,
+  v0 lookup-table addresses appended to account list.
+- Pinned substreams 0.6 / substreams-solana 0.14 (prost). The 0.16 line is buffa-based and did not fit.
+- cargo test passes (2 unit tests).
+
+## Not yet verified (needs wasm target + CLI + API key)
+- wasm build, pack, and a real run on the 6 blocks
+- the solana-common spkg import URL in substreams.yaml
+- SPL token transfers are not handled; the example amount 325253 could be one. If the run output is
+  short of expectations, add Transfer / TransferChecked (token program) next.
+
+## Run
+.unifiedhiring/run.sh

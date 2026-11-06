@@ -1,0 +1,19 @@
+[package]
+name = "solana-transfers"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "solana_transfers"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+substreams = "0.6"
+substreams-solana = "0.14"
+prost = "0.13"
+bs58 = "0.5"
+
+[profile.release]
+lto = true
+opt-level = "s"
+strip = "debuginfo"
