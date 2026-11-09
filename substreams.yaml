@@ -1,0 +1,31 @@
+specVersion: v0.1.0
+package:
+  name: solana_transfers
+  version: v0.1.0
+  url: https://github.com/CLR3-Ventures/substreams-assignment-1
+  description: Extracts native SOL and SPL token transfers (incl. inner instructions) from successful Solana transactions as from/to/amount records.
+
+network: solana-mainnet-beta
+
+protobuf:
+  files:
+    - transfers.proto
+  importPaths:
+    - ./proto
+  excludePaths:
+    - sf
+    - google
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ./target/wasm32-unknown-unknown/release/solana_transfers.wasm
+
+modules:
+  - name: map_transfers
+    kind: map
+    initialBlock: 385870151
+    inputs:
+      - source: sf.solana.type.v1.Block
+    output:
+      type: proto:transfers.v1.Transfers
