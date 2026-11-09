@@ -1,0 +1,11 @@
+# Rust build output
+/target/
+
+# Credentials written by `substreams auth` — never commit
+.substreams.env
+.env
+*.env
+
+# Root build output and temp packages (the delivered package lives in artifacts/)
+/*.spkg
+*.tmp.spkg

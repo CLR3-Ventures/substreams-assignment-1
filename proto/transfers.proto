@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package transfers.v1;
+
+// All transfers extracted from one Solana block (slot).
+message Transfers {
+  repeated Transfer transfers = 1;
+}
+
+// One SOL or SPL token transfer. Exactly the three fields required by the task.
+message Transfer {
+  string from = 1;   // sender wallet address, base58
+  string to = 2;     // recipient wallet address, base58
+  uint64 amount = 3; // lamports (SOL) or raw base units (SPL token)
+}
