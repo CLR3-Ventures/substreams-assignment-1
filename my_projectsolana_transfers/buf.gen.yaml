@@ -1,0 +1,9 @@
+version: v1
+plugins:
+- plugin: buf.build/anthropics/buffa:v0.9.2
+  out: src/pb
+  opt:
+    - lazy_views=true
+    - unknown_fields=false
+    - extern_path=.sf.solana.type.v1=::substreams_solana::pb::sf::solana::type::v1
+    - idiomatic_field_names=true

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package mydata.v1;
+
+message MyData {
+  repeated Transfer transfers = 1;
+}
+
+message Transfer {
+  string from = 1;
+  string to = 2;
+  uint64 amount = 3;
+}
